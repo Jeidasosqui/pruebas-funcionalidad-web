@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio de Pruebas Web</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #155eef;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        main {
+            width: 90%;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #00000012;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input {
+            border: 1px solid #94a3b8;
+        }
+
+        button {
+            background: #155eef;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1045b5;
+        }
+
+        a {
+            color: #155eef;
+        }
+
+        #resultado {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Pruebas de Funcionalidad Web</h1>
+        <p>Sitio de prueba para la evidencia del SENA</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Prueba de visualización</h2>
+            <p>
+                Este sitio permite verificar el diseño, la adaptación
+                a diferentes pantallas y el funcionamiento de sus controles.
+            </p>
+            <a href="#formulario">Ir al formulario</a>
+        </section>
+
+        <section id="formulario">
+            <h2>Prueba de formulario</h2>
+
+            <form id="formularioPrueba">
+                <label for="nombre">Nombre completo:</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Escribe tu nombre"
+                    required
+                    minlength="3"
+                >
+
+                <label for="correo">Correo electrónico:</label>
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    placeholder="ejemplo@correo.com"
+                    required
+                >
+
+                <button type="submit">Validar formulario</button>
+            </form>
+
+            <p id="resultado" role="status" aria-live="polite"></p>
+        </section>
+
+        <section>
+            <h2>Prueba de botón</h2>
+            <p>Presiona el botón para comprobar su funcionamiento.</p>
+            <button type="button" id="botonPrueba">
+                Probar botón
+            </button>
+            <p id="mensajeBoton" role="status"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Proyecto académico de pruebas de software - SENA</p>
+    </footer>
+
+    <script>
+        const formulario = document.getElementById("formularioPrueba");
+        const resultado = document.getElementById("resultado");
+
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const nombre = document.getElementById("nombre").value.trim();
+
+            resultado.textContent =
+                "Formulario validado correctamente. Bienvenido, " + nombre + ".";
+        });
+
+        document.getElementById("botonPrueba").addEventListener("click", function() {
+            document.getElementById("mensajeBoton").textContent =
+                "La prueba del botón fue exitosa.";
+        });
+    </script>
+</body>
+</html>
